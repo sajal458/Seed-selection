@@ -1,0 +1,44 @@
+<!doctype html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Seed List</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body>
+<div class="container mt-4">
+    <h2>All Seeds</h2>
+    <a href="/seeds/new" class="btn btn-primary mb-3">Add New Seed</a>
+    <table class="table table-bordered">
+        <thead>
+        <tr>
+            <th>Name</th>
+            <th>Crop Type</th>
+            <th>Soil</th>
+            <th>Region</th>
+            <th>Season</th>
+            <th>pH Level</th>
+            <th>Description</th>
+            <th>Actions</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="seed : ${seeds}">
+            <td th:text="${seed.name}"></td>
+            <td th:text="${seed.crop_type}"></td>
+            <td th:text="${seed.suitable_soil}"></td>
+            <td th:text="${seed.suitable_region}"></td>
+            <td th:text="${seed.season}"></td>
+            <td th:text="${seed.phLevel}"></td>
+            <td th:text="${seed.description}"></td>
+            <td>
+                <a th:href="@{'/seeds/edit/' + ${seed.id}}" class="btn btn-sm btn-warning">Edit</a>
+                <a th:href="@{'/seeds/delete/' + ${seed.id}}" class="btn btn-sm btn-danger">Delete</a>
+            </td>
+        </tr>
+        </tbody>
+    </table>
+</div>
+</body>
+</html>
