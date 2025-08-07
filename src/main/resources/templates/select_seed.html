@@ -1,22 +1,134 @@
+<!--<!doctype html>-->
+<!--<html lang="en" xmlns:th="http://www.thymeleaf.org">-->
+<!--<head>-->
+<!--    <meta charset="utf-8">-->
+<!--    <meta name="viewport" content="width=device-width, initial-scale=1">-->
+<!--    <title>Select Seed</title>-->
+<!--    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet">-->
+<!--</head>-->
+<!--<body>-->
+
+<!--<div th:replace="navbar :: navbar"></div>-->
+
+
+
+<!--<div class="container mt-4">-->
+<!--    <h2>Enter Information</h2>-->
+<!--    <form action="/recommended-seeds" method="post" th:object="${seedInput}">-->
+<!--        <div class="mb-3"><input class="form-control" placeholder="Crop Type" th:field="*{crop_type}" /></div>-->
+<!--        <div class="mb-3"><input class="form-control" placeholder="Suitable Soil" th:field="*{suitable_soil}" /></div>-->
+<!--        <div class="mb-3"><input class="form-control" placeholder="Suitable Region" th:field="*{suitable_region}" /></div>-->
+<!--        <div class="mb-3"><input class="form-control" placeholder="Season" th:field="*{season}" /></div>-->
+<!--        <div class="mb-3"><input class="form-control" placeholder="pH Level" th:field="*{phLevel}" /></div>-->
+<!--        <button type="submit" class="btn btn-success">Get Recommendations</button>-->
+<!--    </form>-->
+<!--</div>-->
+<!--</body>-->
+<!--</html>-->
+
+
+
+
 <!doctype html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Select Seed</title>
+
+    <!-- Bootstrap CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet">
+
+    <style>
+        .banner-wrapper {
+            position: relative;
+            width: 100%;
+            height: 300px;
+            overflow: hidden;
+        }
+
+        .banner-wrapper img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.5); /* black opacity */
+        }
+
+        .banner-text {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            color: white;
+            text-align: center;
+            z-index: 1;
+        }
+
+        .form-container {
+            max-width: 600px;
+            margin: auto;
+            background-color: #f8f9fa;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+        }
+    </style>
 </head>
 <body>
-<div class="container mt-4">
-    <h2>Enter Information</h2>
-    <form action="/recommended-seeds" method="post" th:object="${seedInput}">
-        <div class="mb-3"><input class="form-control" placeholder="Crop Type" th:field="*{crop_type}" /></div>
-        <div class="mb-3"><input class="form-control" placeholder="Suitable Soil" th:field="*{suitable_soil}" /></div>
-        <div class="mb-3"><input class="form-control" placeholder="Suitable Region" th:field="*{suitable_region}" /></div>
-        <div class="mb-3"><input class="form-control" placeholder="Season" th:field="*{season}" /></div>
-        <div class="mb-3"><input class="form-control" placeholder="pH Level" th:field="*{phLevel}" /></div>
-        <button type="submit" class="btn btn-success">Get Recommendations</button>
-    </form>
+
+<!-- Navbar -->
+<div th:replace="navbar :: navbar"></div>
+
+<!-- Banner Section -->
+<div class="banner-wrapper mb-5">
+    <img src="/images/oopBANNER.jpg" alt="Banner Image">
+    <div class="overlay"></div>
+    <div class="banner-text">
+        <h1 class="display-5 fw-bold">Find the Right Seed</h1>
+        <p class="lead">Enter your farming preferences to get recommended seeds</p>
+    </div>
 </div>
+
+<!-- Form Section -->
+<div class="container">
+    <div class="form-container">
+        <h3 class="mb-4 text-center">Enter Information</h3>
+        <form action="/recommended-seeds" method="post" th:object="${seedInput}">
+            <div class="mb-3">
+                <label class="form-label">Crop Type</label>
+                <input class="form-control" placeholder="e.g. Rice, Wheat" th:field="*{crop_type}" />
+            </div>
+            <div class="mb-3">
+                <label class="form-label">Suitable Soil</label>
+                <input class="form-control" placeholder="e.g. Loamy, Sandy" th:field="*{suitable_soil}" />
+            </div>
+            <div class="mb-3">
+                <label class="form-label">Suitable Region</label>
+                <input class="form-control" placeholder="e.g. Rajshahi, Khulna" th:field="*{suitable_region}" />
+            </div>
+            <div class="mb-3">
+                <label class="form-label">Season</label>
+                <input class="form-control" placeholder="e.g. Winter, Summer" th:field="*{season}" />
+            </div>
+            <div class="mb-3">
+                <label class="form-label">pH Level</label>
+                <input class="form-control" placeholder="e.g. 6.5" th:field="*{phLevel}" />
+            </div>
+            <div class="text-center">
+                <button type="submit" class="btn btn-success px-5">Get Recommendations</button>
+            </div>
+        </form>
+    </div>
+</div>
+
 </body>
 </html>
+

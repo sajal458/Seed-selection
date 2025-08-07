@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head><title>Edit Article</title></head>
+<body>
+<h2>Edit Article</h2>
+<form th:action="@{/articles/{id}(id=${article.id})}" method="post" enctype="multipart/form-data" th:object="${article}">
+    <label>Title:</label>
+    <input type="text" th:field="*{title}" required/><br/><br/>
+
+    <label>Description:</label>
+    <textarea th:field="*{description}" required></textarea><br/><br/>
+
+    <label>Current Image:</label><br/>
+    <img th:src="@{'/uploads/' + ${article.imagePath}}" width="200"/><br/><br/>
+
+    <label>Change Image:</label>
+    <input type="file" name="imageFile" accept="image/*"/><br/><br/>
+
+    <button type="submit">Update</button>
+</form>
+</body>
+</html>
+ 
