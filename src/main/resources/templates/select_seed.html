@@ -1,30 +1,4 @@
-<!--<!doctype html>-->
-<!--<html lang="en" xmlns:th="http://www.thymeleaf.org">-->
-<!--<head>-->
-<!--    <meta charset="utf-8">-->
-<!--    <meta name="viewport" content="width=device-width, initial-scale=1">-->
-<!--    <title>Select Seed</title>-->
-<!--    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet">-->
-<!--</head>-->
-<!--<body>-->
 
-<!--<div th:replace="navbar :: navbar"></div>-->
-
-
-
-<!--<div class="container mt-4">-->
-<!--    <h2>Enter Information</h2>-->
-<!--    <form action="/recommended-seeds" method="post" th:object="${seedInput}">-->
-<!--        <div class="mb-3"><input class="form-control" placeholder="Crop Type" th:field="*{crop_type}" /></div>-->
-<!--        <div class="mb-3"><input class="form-control" placeholder="Suitable Soil" th:field="*{suitable_soil}" /></div>-->
-<!--        <div class="mb-3"><input class="form-control" placeholder="Suitable Region" th:field="*{suitable_region}" /></div>-->
-<!--        <div class="mb-3"><input class="form-control" placeholder="Season" th:field="*{season}" /></div>-->
-<!--        <div class="mb-3"><input class="form-control" placeholder="pH Level" th:field="*{phLevel}" /></div>-->
-<!--        <button type="submit" class="btn btn-success">Get Recommendations</button>-->
-<!--    </form>-->
-<!--</div>-->
-<!--</body>-->
-<!--</html>-->
 
 
 
@@ -104,23 +78,23 @@
         <form action="/recommended-seeds" method="post" th:object="${seedInput}">
             <div class="mb-3">
                 <label class="form-label">Crop Type</label>
-                <input class="form-control" placeholder="e.g. Rice, Wheat" th:field="*{crop_type}" />
+                <input class="form-control"  th:field="*{crop_type}" />
             </div>
             <div class="mb-3">
-                <label class="form-label">Suitable Soil</label>
-                <input class="form-control" placeholder="e.g. Loamy, Sandy" th:field="*{suitable_soil}" />
+                <label class="form-label"> Soil</label>
+                <input class="form-control"  th:field="*{suitable_soil}" />
             </div>
             <div class="mb-3">
-                <label class="form-label">Suitable Region</label>
-                <input class="form-control" placeholder="e.g. Rajshahi, Khulna" th:field="*{suitable_region}" />
+                <label class="form-label"> Region</label>
+                <input class="form-control"  th:field="*{suitable_region}" />
             </div>
             <div class="mb-3">
                 <label class="form-label">Season</label>
-                <input class="form-control" placeholder="e.g. Winter, Summer" th:field="*{season}" />
+                <input class="form-control"  th:field="*{season}" />
             </div>
             <div class="mb-3">
                 <label class="form-label">pH Level</label>
-                <input class="form-control" placeholder="e.g. 6.5" th:field="*{phLevel}" />
+                <input class="form-control"  th:field="*{phLevel}" />
             </div>
             <div class="text-center">
                 <button type="submit" class="btn btn-success px-5">Get Recommendations</button>
@@ -129,6 +103,11 @@
     </div>
 </div>
 
+
+
+
+<div th:insert="footer :: footer"></div>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>
 

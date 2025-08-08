@@ -14,57 +14,7 @@
 </head>
 <body>
 <div th:replace="navbar :: navbar"></div>
-<!--<div class="container my-5">-->
-<!--    <h2 class="text-center mb-4">Available Seeds</h2>-->
 
-<!--    <div class="row">-->
-<!--        &lt;!&ndash; Loop for each seed &ndash;&gt;-->
-<!--        <div class="col-lg-3 col-md-4 col-sm-12 mb-4" th:each="seed : ${seeds}">-->
-<!--            <div class="card h-100 shadow-sm">-->
-<!--                <img th:src="@{'/uploads/' + ${seed.imagePath}}" class="card-img-top" alt="Seed Image">-->
-<!--                <div class="card-body">-->
-<!--                    <h5 class="card-title" th:text="${seed.name}">Seed Name</h5>-->
-<!--                    <p class="card-text">Price: $<span th:text="${seed.price}">0.00</span></p>-->
-<!--                    <a th:href="@{'/cart/add/' + ${seed.id}}" class="btn btn-primary w-100">Add to Cart</a>-->
-
-
-
-
-
-<!--                </div>-->
-<!--            </div>-->
-<!--        </div>-->
-<!--    </div>-->
-
-<!--    <div class="text-center mt-4">-->
-<!--        <a href="/cart" class="btn btn-success">View Cart</a>-->
-<!--    </div>-->
-<!--</div>-->
-
-
-<!--<h2>Your Cart</h2>-->
-<!--<div th:if="${#lists.isEmpty(cart)}">-->
-<!--    <p>Your cart is empty.</p>-->
-<!--</div>-->
-<!--<div th:if="${!#lists.isEmpty(cart)}">-->
-<!--    <table class="table">-->
-<!--        <thead>-->
-<!--        <tr>-->
-<!--            <th>Seed</th>-->
-<!--            <th>Price</th>-->
-<!--            <th>Remove</th>-->
-<!--        </tr>-->
-<!--        </thead>-->
-<!--        <tbody>-->
-<!--        <tr th:each="item : ${cart}">-->
-<!--            <td th:text="${item.name}"></td>-->
-<!--            <td th:text="${item.price}"></td>-->
-<!--            <td><a th:href="@{'/cart/remove/' + ${item.id}}" class="btn btn-danger btn-sm">Remove</a></td>-->
-<!--        </tr>-->
-<!--        </tbody>-->
-<!--    </table>-->
-<!--    <a href="/checkout" class="btn btn-success">Checkout</a>-->
-<!--</div>-->
 
 
 
@@ -88,13 +38,11 @@
                 </div>
             </div>
 
-            <div class="text-center mt-4">
-                <a href="/cart" class="btn btn-success">View Cart</a>
-            </div>
+
         </div>
 
         <!-- Right side: Cart -->
-        <div class="col-lg-4">
+        <div class="col-lg-4 text-center">
             <h2>Your Cart</h2>
             <div th:if="${#lists.isEmpty(cart)}">
                 <p>Your cart is empty.</p>
@@ -124,7 +72,7 @@
     </div>
 </div>
 
-
+<div th:insert="footer :: footer"></div><script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 <!--<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>-->
 
 
