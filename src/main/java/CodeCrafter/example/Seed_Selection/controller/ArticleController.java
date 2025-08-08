@@ -1,5 +1,6 @@
 package CodeCrafter.example.Seed_Selection.controller;
-
+import CodeCrafter.example.Seed_Selection.entity.Admin;
+import jakarta.servlet.http.HttpSession;
 import CodeCrafter.example.Seed_Selection.entity.Article;
 import CodeCrafter.example.Seed_Selection.service.Articleservice;
 import org.springframework.beans.factory.annotation.Value;
@@ -23,13 +24,47 @@ public class ArticleController {
     public ArticleController(Articleservice articleService) {
         this.articleService = articleService;
     }
+//
+//    ("/articles")
+//    public String listArticles(Model model) {
+//        model.addAttribute("articles", articleService.getAllArticles());
+//        return "articles";
+//    }
+
+//    @GetMapping("/articles")
+//    public String listArticles(HttpSession session, Model model) {
+//        Boolean isAdmin = (Boolean) session.getAttribute("admin");
+//        if (isAdmin == null || !isAdmin) {
+//            return "redirect:/login"; // Redirect to login if not logged in
+//        }
+//        model.addAttribute("articles", articleService.getAllArticles());
+//        return "articles";
+//    }
+
+//    @GetMapping("/articles")
+//    public String listArticles(HttpSession session, Model model) {
+//        Boolean isAdmin = (Boolean) session.getAttribute("admin");
+//        System.out.println("Admin session: " + isAdmin);
+//
+//        if (isAdmin == null || !isAdmin) {
+//            return "redirect:/login"; // Fails here if no login page
+//        }
+//
+//        model.addAttribute("articles", articleService.getAllArticles());
+//         return "articles";
+//    }
+
+
 
     @GetMapping("/articles")
-    public String listArticles(Model model) {
+    public String listArticles(Model model, HttpSession session) {
+        Admin admin = (Admin) session.getAttribute("admin");
+        if (admin == null) {
+            return "redirect:/login";
+        }
         model.addAttribute("articles", articleService.getAllArticles());
         return "articles";
     }
-
     @GetMapping("/articles/new")
     public String createArticleForm(Model model) {
         model.addAttribute("article", new Article());

@@ -1,5 +1,6 @@
 package CodeCrafter.example.Seed_Selection.controller;
-
+import CodeCrafter.example.Seed_Selection.entity.Admin;
+import jakarta.servlet.http.HttpSession;
 import CodeCrafter.example.Seed_Selection.entity.Order;
 import CodeCrafter.example.Seed_Selection.entity.OrderItem;
 import CodeCrafter.example.Seed_Selection.entity.StoreSeed;
@@ -208,7 +209,11 @@ public class StoreFrontController {
     }
 
     @GetMapping("/admin/orders")
-    public String viewOrders(Model model) {
+    public String viewOrders(Model model,HttpSession session) {
+        Admin admin = (Admin) session.getAttribute("admin");
+        if (admin == null) {
+            return "redirect:/login";
+        }
         List<Order> orders = orderRepository.findAll();
         model.addAttribute("orders", orders);
         return "admin_orders";

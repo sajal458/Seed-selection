@@ -1,9 +1,10 @@
 package CodeCrafter.example.Seed_Selection.controller;
 
+import CodeCrafter.example.Seed_Selection.entity.Admin;
 import CodeCrafter.example.Seed_Selection.entity.Seed;
 import CodeCrafter.example.Seed_Selection.service.Seedservice;
 import org.springframework.stereotype.Controller;
-
+import jakarta.servlet.http.HttpSession;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
@@ -20,7 +21,11 @@ public class SeedController {
     }
 
     @GetMapping("/seeds")
-    public String listSeeds(Model model) {
+    public String listSeeds(Model model,HttpSession session ) {
+        Admin admin = (Admin) session.getAttribute("admin");
+        if (admin == null) {
+            return "redirect:/login";
+        }
         model.addAttribute("seeds", seedService.getAllSeeds());
         return "seeds";
     }
