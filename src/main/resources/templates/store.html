@@ -32,7 +32,7 @@
                         <div class="card-body">
                             <h5 class="card-title" th:text="${seed.name}">Seed Name</h5>
                             <p class="card-text">Price: $<span th:text="${seed.price}">0.00</span></p>
-
+                            <a th:href="@{'/cart/add/' + ${seed.id}}" class="btn btn-primary w-100">Add to Cart</a>
                         </div>
                     </div>
                 </div>
